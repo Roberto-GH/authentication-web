@@ -1,1 +1,32 @@
-<h3>Este es el container del home</h3>
+<div class="container my-3">
+  <h3>Este es el container del home</h3>
+  <h2>Juego de tronos</h2>
+  <div class="my-3">
+    <mat-tab-group>
+      <mat-tab label="Personajes">
+        <div class="row">
+          <div *ngFor="let c of characters" class="col col-6 col-md-4">
+            <mat-card class="character-card m-3">
+              <mat-card-header>
+                <mat-card-title>{{ c.firstName + ' ' + c.lastName }}</mat-card-title>
+                <mat-card-subtitle>{{ c.family }}</mat-card-subtitle>
+              </mat-card-header>
+              <img mat-card-image [src]="c.imageUrl" alt="c.firstName" class="character-image">
+              <mat-card-content>
+                <p>
+                  {{ c.title }}
+                </p>
+              </mat-card-content>
+            </mat-card>
+          </div>
+        </div>        
+      </mat-tab>
+
+      <mat-tab label="Continentes">
+        <div *ngFor="let c of continents">
+          <h2>{{ c.name }}</h2>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </div>  
+</div>
