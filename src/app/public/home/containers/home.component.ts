@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { TokenService } from "src/app/core/shared/services/token.service";
 import { PublicService } from "../../public.service";
 
 @Component({
@@ -9,12 +10,21 @@ import { PublicService } from "../../public.service";
 
 export class HomeComponent implements OnInit {
 
+  isLogged = false
+  nombreUsuario = '';
   characters: any;
   continents: any;
 
-  constructor(private publicService: PublicService) {}
+  constructor(private publicService: PublicService, private tokenService: TokenService) {}
 
   ngOnInit() {
+    if(this.tokenService.getToken()){
+      this.isLogged = true;
+      this.nombreUsuario = this.tokenService.getEmail();
+    }else{
+      this.isLogged = false;
+      this.nombreUsuario = '';
+    }
     this.getCharacters();
     this.getContinents();
   }

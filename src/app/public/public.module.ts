@@ -1,10 +1,16 @@
 import { NgModule } from "@angular/core";
 import { SharedModule } from "../core/shared/shared.module";
+import { LoginFormComponent } from "./authentication/components/login-form/login-form.component";
+import { AuthenticationNavComponent } from "./authentication/components/authentication-nav/authentication-nav.component";
+import { LoginComponent } from "./authentication/containers/login/login.component";
+import { SignUpComponent } from "./authentication/containers/signup/sign-up.component";
 import { HomeComponent } from "./home/containers/home.component";
-import { LoginComponent } from "./login/containers/login.component";
 import { PublicRoutingModule } from "./public-routing.module";
 import { PublicComponent } from "./public.component";
 import { PublicService } from "./public.service";
+import { SignUpFormComponent } from "./authentication/components/sign-up-form/sign-up-form.component";
+
+
 
 @NgModule({
   imports: [
@@ -14,7 +20,11 @@ import { PublicService } from "./public.service";
   declarations: [
     PublicComponent,
     HomeComponent,
-    LoginComponent
+    LoginComponent,
+    LoginFormComponent,    
+    SignUpComponent,
+    AuthenticationNavComponent,
+    SignUpFormComponent
   ],
   exports: [],
   providers: [

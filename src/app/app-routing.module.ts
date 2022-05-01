@@ -4,6 +4,7 @@ import { NotFoundComponent } from './core/shared/components/not-found/not-found.
 
 const routes: Routes = [
   { path: '', loadChildren: () => import('./public/public.module').then(m => m.PublicModule) },
+  { path: 'web', loadChildren: () => import('./private/private.module').then(m => m.PrivateModule) },
   { path: '**', component: NotFoundComponent }
 ];
 

@@ -1,6 +1,26 @@
-<div class="container my-3">
-  <h3>Este es el container del home</h3>
-  <h2>Juego de tronos</h2>
+<app-menu></app-menu>
+
+<!-- Bienvenida -->
+<div class="container py-4">
+  <div class="p-4 mb-4 bg-light rounded-3">
+    <div class="container-fluid py-3">
+
+      <div *ngIf="isLogged; else loggedOut">
+        <h2 class="display-5 fw-bold fs-2">Bienvenido {{ nombreUsuario }}</h2>
+      </div>
+
+      <ng-template #loggedOut>
+        <h2 class="display-5 fw-bold fs-2">No has iniciado sesión</h2>
+      </ng-template>
+
+      <hr class="my-4">
+      <p class="col-md-8 fs-4">Using a series of utilities, you can create this jumbotron, just like the one in previous versions of Bootstrap. Check out the examples below for how you can remix and restyle it to your liking.</p>
+    </div>
+  </div>
+</div>
+
+<div class="container my-3">  
+  <h2 class="fs-3 m-4">Juego de tronos</h2>
   <div class="my-3">
     <mat-tab-group>
       <mat-tab label="Personajes">

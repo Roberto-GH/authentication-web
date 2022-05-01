@@ -1,0 +1,36 @@
+<div class="card-body">
+  
+  <form #f="ngForm" (ngSubmit)="onSignUp()" novalidate>
+    <div class="mb-3">
+      <label class="form-label" for="name">Nombre</label>
+      <input type="text" name="name" id="name" class="form-control" [(ngModel)]="name" required>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label" for="lastName">Apellido</label>
+      <input type="text" name="lastName" id="lastName" class="form-control" [(ngModel)]="lastName" required>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label" for="phone">Celular</label>
+      <input type="text" name="phone" id="phone" class="form-control" [(ngModel)]="phone" required>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label" for="email">Email</label>
+      <input type="text" name="email" id="email" class="form-control" [(ngModel)]="email"
+        required>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label" for="password">Contraseña</label>
+      <input type="password" name="password" id="password" class="form-control" [(ngModel)]="password" required>
+    </div>
+    
+    <div class="mb-3 d-grid gap-2">
+      <button class="btn btn-outline-success btn-block" [disabled]="!f.valid">
+        <i class="fas fa-sign-in-alt" aria-hidden="true"></i> Crear Cuenta</button>
+    </div>
+  </form>  
+
+</div>
