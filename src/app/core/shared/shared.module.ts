@@ -11,6 +11,7 @@ import { TokenService } from "./services/token.service";
 import { FormsModule } from "@angular/forms";
 import { MenuComponent } from "./components/menu/menu.component";
 import { ToastrModule, ToastrService } from 'ngx-toastr';
+import { TokenInterceptorService } from "./services/token-interceptor.service";
 
 @NgModule({
   imports: [
@@ -38,9 +39,9 @@ import { ToastrModule, ToastrService } from 'ngx-toastr';
     ToastrModule   
   ],
   providers: [
-    AuthenticationService,
     TokenService,
-    ToastrService   
+    AuthenticationService,    
+    ToastrService
   ]
 })
 

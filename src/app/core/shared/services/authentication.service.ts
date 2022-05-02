@@ -30,6 +30,13 @@ export class AuthenticationService {
     )
   }
 
+  refresh(jwtResponseModel: JwtResponseModel): Observable<any> {
+    return this.http.post<JwtResponseModel>(this.authenticationURL+'refresh', jwtResponseModel).pipe(
+      //tap(console.log),
+      catchError(this.handleError)
+    )
+  }
+
   private handleError(error: Response) {    
     const msg = JSON.stringify(error);
     return throwError(() => msg);
