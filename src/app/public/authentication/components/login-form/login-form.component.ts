@@ -30,7 +30,7 @@ export class LoginFormComponent implements OnInit {
     this.loginUser = new UserLoginRequestModel(this.email, this.password);
     this.authenticationService.login(this.loginUser).subscribe({
       next: (response) => {        
-        this.tokenService.setToken(response.token);
+        this.tokenService.setTokens(response.token, response.refreshToken);
         this.router.navigate(['/']);        
       },
       error: (error) => {             

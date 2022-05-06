@@ -30,10 +30,12 @@ export class TokenInterceptorService implements HttpInterceptor {
    
     return next.handle(intReq).pipe(catchError((err: HttpErrorResponse) => {
       if (err.status === 401) {
-        const dto: JwtResponseModel = new JwtResponseModel(this.tokenService.getToken());
+        const dto: JwtResponseModel = new JwtResponseModel();
+        dto.setToken(this.tokenService.getToken());
+        dto.setRefreshToken(this.tokenService.getTokenRefresh());
         return this.authenticationService.refresh(dto).pipe(concatMap((data: any) => {
           console.log('refreshing...');
-          this.tokenService.setToken(data.token);
+          this.tokenService.setTokens(data.token, data.refreshToken);
           intReq = this.addToken(req, data.token);
           return next.handle(intReq);
         }));

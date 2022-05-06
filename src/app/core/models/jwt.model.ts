@@ -1,9 +1,17 @@
 export class JwtResponseModel {
 
-  token: string; 
+  token: string | undefined;
+  refreshToken: string | undefined;
 
-  constructor(token: string){
+  constructor(){
+  }
+
+  setToken(token: string){
     this.token = token;
+  }
+
+  setRefreshToken(refreshToken: string) {
+    this.refreshToken = refreshToken;
   }
 
 }
