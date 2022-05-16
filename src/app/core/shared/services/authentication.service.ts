@@ -12,7 +12,7 @@ import { NewUserRequestModel } from "../../models/new-user-request.model";
 })
 export class AuthenticationService {
 
-  authenticationURL = environment.authenticationURL;
+  authenticationURL = environment.authenticationURL;  
 
   constructor(private http: HttpClient){}
 

@@ -12,6 +12,7 @@ import { FormsModule } from "@angular/forms";
 import { MenuComponent } from "./components/menu/menu.component";
 import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { TokenInterceptorService } from "./services/token-interceptor.service";
+import { EmailPasswordService } from "./services/email-password.service";
 
 @NgModule({
   imports: [
@@ -41,7 +42,8 @@ import { TokenInterceptorService } from "./services/token-interceptor.service";
   providers: [
     TokenService,
     AuthenticationService,    
-    ToastrService
+    ToastrService,
+    EmailPasswordService
   ]
 })
 

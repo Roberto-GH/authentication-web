@@ -9,6 +9,8 @@ import { PublicRoutingModule } from "./public-routing.module";
 import { PublicComponent } from "./public.component";
 import { PublicService } from "./public.service";
 import { SignUpFormComponent } from "./authentication/components/sign-up-form/sign-up-form.component";
+import { ChangePasswordComponent } from './authentication/components/change-password/change-password.component';
+import { SendEmailComponent } from './authentication/components/send-email/send-email.component';
 
 
 
@@ -24,7 +26,9 @@ import { SignUpFormComponent } from "./authentication/components/sign-up-form/si
     LoginFormComponent,    
     SignUpComponent,
     AuthenticationNavComponent,
-    SignUpFormComponent
+    SignUpFormComponent,
+    ChangePasswordComponent,
+    SendEmailComponent
   ],
   exports: [],
   providers: [
