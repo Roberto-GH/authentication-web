@@ -1,7 +1,7 @@
 export class DetalleUserResponseModel {
 
   id: number;
-  profile_img: string;  
+  profile_img: string;    
   name: string;
   lastName: string;
   biography: string;
@@ -13,7 +13,7 @@ export class DetalleUserResponseModel {
   constructor(id: number, profile_img: string, name: string, lastName: string, biography: string, phone: string, email: string,  password: string, roles: string[] = []) {
     
       this.id = id;
-      this.profile_img = profile_img;  
+      this.profile_img = profile_img;        
       this.name= name;
       this.lastName = lastName;
       this.biography = biography;

@@ -26,8 +26,18 @@ export class UsersService {
     )
   }
 
-  updateUser(user: DetalleUserResponseModel, id: number): Observable<any> {
+  updateUser(user: DetalleUserResponseModel, id: number): Observable<any> {    
     return this.http.put(this.apiURL+`update-user/${id}`, user).pipe(
+      //tap(console.log),
+      catchError(this.handleError)
+    )
+  }
+
+  updateUserFile(file: File): Observable<any> {
+    const formData = new FormData();
+    formData.append("file", file);
+    //formData.append("reportProgress", "true");
+    return this.http.post(this.apiURL+"assets/upload", formData).pipe(
       //tap(console.log),
       catchError(this.handleError)
     )
@@ -42,7 +52,7 @@ export class UsersService {
 
   private handleError(error: Response) {    
     const msg = JSON.stringify(error);
-    console.log(error)
+    console.error(error)
     return throwError(() => msg);
   }
 

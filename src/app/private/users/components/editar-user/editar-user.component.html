@@ -12,8 +12,8 @@
       <form (ngSubmit)="onUpdate(user.id)" novalidate #f="ngForm">
 
         <div class="mb-3">
-          <label class="form-label" for="profile_img">Imagen de perfil</label><br>
-          <input type="file" id="profile_img" name="profile_img" accept=".jpg, .jpeg, .png" [(ngModel)]="user.profile_img">
+          <label class="form-label" for="file">Imagen de perfil</label><br>
+          <input (change)="capturarFile($event)" type="file" id="file" name="file" accept=".jpg, .jpeg, .png">
         </div>        
 
         <div class="mb-3">

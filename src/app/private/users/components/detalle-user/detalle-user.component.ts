@@ -35,8 +35,7 @@ export class DetalleUserComponent implements OnInit {
           timeOut: 6000,  positionClass: 'toast-top-center'
         });
         this.volver();
-      },
-      complete: () => console.log("get USER complete")
+      }
     })
   } 
 

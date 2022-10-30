@@ -29,14 +29,12 @@ export class UsersListComponent implements OnInit {
   usersList(): void {    
     this.userService.getUsersList().subscribe({
       next: (response) => this.users = response,
-      error: (error) => this.errorMessage = JSON.parse(error).error.message,
-      complete: () => console.log("get users complete")
+      error: (error) => this.errorMessage = JSON.parse(error).error.message      
     })
   } 
 
   onDelete(id: number): void {    
-    this.userService.deleteUser(id).subscribe({   
-      next: (response) => console.log(response),   
+    this.userService.deleteUser(id).subscribe({      
       error: (error) => {
         this.errorMessage = JSON.parse(error).error.message;
         this.toastr.error(this.errorMessage, 'FAIL', {
@@ -44,8 +42,7 @@ export class UsersListComponent implements OnInit {
         });
         //console.log(this.errorMessage)        
       },
-      complete: () => { 
-        console.log("delete USER complete")
+      complete: () => {
         this.toastr.success("Usuario eliminado", 'OK', {
           timeOut: 6000,  positionClass: 'toast-top-center'
         });

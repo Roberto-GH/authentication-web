@@ -13,7 +13,7 @@ import { TokenService } from 'src/app/core/shared/services/token.service';
 export class SignUpFormComponent implements OnInit { 
   
   newUser!: NewUserRequestModel;
-  profile_img!: string;  
+  profile_img: string ="assets/perfil.png";
   name!: string;
   lastName!: string;
   phone!: string;  
@@ -31,10 +31,7 @@ export class SignUpFormComponent implements OnInit {
 
   onSignUp(): void {
     this.newUser = new NewUserRequestModel(this.profile_img, this.name, this.lastName, this.phone, this.email, this.password, this.roles);
-    this.authenticationService.signUp(this.newUser).subscribe({
-      next: (response) => {        
-        console.log(response)            
-      },
+    this.authenticationService.signUp(this.newUser).subscribe({      
       error: (error) => {        
         this.errorMessage = JSON.parse(error).error.message;
         this.toastr.error(this.errorMessage, 'FAIL', {
