@@ -12,6 +12,10 @@
     </ul>
 
     <form class="form-inline m-4 m-lg-2">
+      <button *ngIf="!isLogged" class="btn btn-outline-success m-4 m-sm-2" routerLink="/signup" type="submit">
+        <i class="fas fa-sign-in-alt mx-1" aria-hidden="true"></i>Crea una cuenta
+      </button>
+
       <button *ngIf="!isLogged" class="btn btn-outline-success m-4 m-sm-2" routerLink="/login" type="submit">
         <i class="fas fa-sign-in-alt mx-1" aria-hidden="true"></i>Iniciar Sesión
       </button>

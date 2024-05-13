@@ -4,7 +4,6 @@
 <div class="container py-4">
   <div class="p-4 mb-4 bg-light rounded-3">
     <div class="container-fluid py-3">
-
       <div *ngIf="isLogged; else loggedOut">
         <h2 class="display-5 fw-bold fs-2">Bienvenido {{ nombreUsuario }}</h2>
       </div>
@@ -13,40 +12,92 @@
         <h2 class="display-5 fw-bold fs-2">No has iniciado sesión</h2>
       </ng-template>
 
-      <hr class="my-4">
-      <p class="col-md-8 fs-4">Using a series of utilities, you can create this jumbotron, just like the one in previous versions of Bootstrap. Check out the examples below for how you can remix and restyle it to your liking.</p>
+      <hr class="my-4" />
     </div>
   </div>
 </div>
 
-<div class="container my-3">  
-  <h2 class="fs-3 m-4">Juego de tronos</h2>
-  <div class="my-3">
-    <mat-tab-group>
-      <mat-tab label="Personajes">
-        <div class="row">
-          <div *ngFor="let c of characters" class="col col-6 col-md-4">
-            <mat-card class="character-card m-3">
-              <mat-card-header>
-                <mat-card-title>{{ c.firstName + ' ' + c.lastName }}</mat-card-title>
-                <mat-card-subtitle>{{ c.family }}</mat-card-subtitle>
-              </mat-card-header>
-              <img mat-card-image [src]="c.imageUrl" alt="c.firstName" class="character-image">
-              <mat-card-content>
-                <p>
-                  {{ c.title }}
-                </p>
-              </mat-card-content>
-            </mat-card>
-          </div>
-        </div>        
-      </mat-tab>
+<div class="container py-2">
+  <header class="pb-3 mb-2 border-bottom">
+  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" class="me-2" fill="#000000" viewBox="0 0 256 256" role="img">
+    <title>Authentication app</title>
+      <path d="M216.57,39.43A80,80,0,0,0,83.91,120.78L28.69,176A15.86,15.86,0,0,0,24,187.31V216a16,16,0,0,0,16,16H72a8,8,0,0,0,8-8V208H96a8,8,0,0,0,8-8V184h16a8,8,0,0,0,5.66-2.34l9.56-9.57A79.73,79.73,0,0,0,160,176h.1A80,80,0,0,0,216.57,39.43ZM224,98.1c-1.09,34.09-29.75,61.86-63.89,61.9H160a63.7,63.7,0,0,1-23.65-4.51,8,8,0,0,0-8.84,1.68L116.69,168H96a8,8,0,0,0-8,8v16H72a8,8,0,0,0-8,8v16H40V187.31l58.83-58.82a8,8,0,0,0,1.68-8.84A63.72,63.72,0,0,1,96,95.92c0-34.14,27.81-62.8,61.9-63.89A64,64,0,0,1,224,98.1ZM192,76a12,12,0,1,1-12-12A12,12,0,0,1,192,76Z">
+    </path>
+  </svg>  
+  <span class="fs-4 fw-bold">Authentication app</span>    
+  </header>
 
-      <mat-tab label="Continentes">
-        <div *ngFor="let c of continents">
-          <h2>{{ c.name }}</h2>
-        </div>
-      </mat-tab>
-    </mat-tab-group>
-  </div>  
+  <div class="px-5 py-2 mb-3 bg-body-tertiary rounded-3">
+    <div class="container-fluid py-5">      
+      <p class="col-md-8 fs-5 lh-base">
+        Esta interfaz grafica tiene el objetivo de mostrar el funcionamiento back-end creado para la gestión de usuarios. Aqui puedes crear una cuenta, 
+        recuperar contraseña, gestionar tu usuario y ver la información de otros usuarios. 
+      </p>      
+    </div>
+  </div>
+
+  <div class="row align-items-md-stretch">    
+    <div class="col-md-6 mb-4">
+      <div class="h-100 p-5 bg-body-tertiary border rounded-3">
+        <h2>Crea una cuenta</h2>
+        <p>
+          Puedes crear una cuenta y posteriormente ver tu usuario. 
+        </p>        
+        <button *ngIf="!isLogged" class="btn btn-outline-success" routerLink="/signup" type="submit">
+          <i class="fas fa-sign-in-alt mx-1" aria-hidden="true"></i>Crea una cuenta
+        </button>
+        <button *ngIf="isLogged" class="btn btn-success" disabled>
+          Ya iniciaste sesión
+        </button>       
+      </div>
+    </div>
+
+    <div class="col-md-6 mb-4">
+      <div class="h-100 p-5 bg-body-tertiary border rounded-3">
+        <h2>Inicia sesión</h2>
+        <p>
+          La autenticacion y autorizacion de usuarios esta hecha con spring security, todo esto bajo el estandar JWT (Json web token).
+        </p>
+        <button *ngIf="!isLogged" class="btn btn-outline-success m-4 m-sm-2" routerLink="/login" type="submit">
+          <i class="fas fa-sign-in-alt mx-1" aria-hidden="true"></i>Iniciar Sesión
+        </button>
+        <button *ngIf="isLogged" class="btn btn-success" disabled>
+          Ya iniciaste sesión
+        </button>
+      </div>
+    </div>
+
+    <div class="col-md-6 mb-4">
+      <div class="h-100 p-5 bg-body-tertiary border rounded-3">
+        <h2>Roles</h2>
+        <p>
+          El rol de administrador te permite gestionar usuarios. Con el rol usuario solo podras ver información.          
+          Inicia sesión para ver usuarios.
+        </p> 
+        <button *ngIf="isLogged" class="btn btn-outline-success m-4 m-sm-2" routerLink="/web/users" type="submit">
+          <i class="fas fa-sign-in-alt mx-1" aria-hidden="true"></i>Usuarios
+        </button>
+        <button *ngIf="!isLogged" class="btn btn-outline-success m-4 m-sm-2" routerLink="/login" type="submit">
+          <i class="fas fa-sign-in-alt mx-1" aria-hidden="true"></i>Iniciar Sesión
+        </button>        
+      </div>
+    </div>
+
+    <div class="col-md-6 mb-4">
+      <div class="h-100 p-5 bg-body-tertiary border rounded-3">
+        <h2>Recuperar contraseña</h2>
+        <p>
+          Olvidaste tu contraseña, no te preocupes, puedes recuperar tu acceso de forma segura.
+        </p>
+        <button *ngIf="!isLogged" class="btn btn-outline-success m-4 m-sm-2" routerLink="/send-email" type="submit">
+          <i class="fas fa-sign-in-alt mx-1" aria-hidden="true"></i>Recuperar contraseña
+        </button>
+        <button *ngIf="isLogged" class="btn btn-success" disabled>
+          Ya iniciaste sesión
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="pt-3 mt-4 text-body-secondary border-top">© 2024</footer>
 </div>
